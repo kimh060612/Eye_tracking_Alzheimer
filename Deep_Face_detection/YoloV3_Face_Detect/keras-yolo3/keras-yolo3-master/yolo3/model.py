@@ -36,7 +36,7 @@ def resblock_body(x, num_filters, num_blocks):
     # Darknet uses left and top padding instead of 'same' mode
     x = ZeroPadding2D(((1,0),(1,0)))(x)
     x = DarknetConv2D_BN_Leaky(num_filters, (3,3), strides=(2,2))(x)
-    for i in range(num_blocks):
+    for _ in range(num_blocks):
         y = compose(
                 DarknetConv2D_BN_Leaky(num_filters//2, (1,1)),
                 DarknetConv2D_BN_Leaky(num_filters, (3,3)))(x)

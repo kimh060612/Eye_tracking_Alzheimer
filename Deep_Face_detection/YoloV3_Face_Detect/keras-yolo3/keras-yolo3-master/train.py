@@ -203,7 +203,7 @@ def data_generator(annotation_lines, batch_size, input_shape, anchors, num_class
     while True:
         image_data = []
         box_data = []
-        for b in range(batch_size):
+        for _ in range(batch_size):
             if i==0:
                 np.random.shuffle(annotation_lines)
             image, box = get_random_data(annotation_lines[i], input_shape, random=True)
