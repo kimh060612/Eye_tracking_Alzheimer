@@ -9,6 +9,7 @@ import sys
 import time
 import datetime
 import argparse
+import cv2
 
 from PIL import Image
 
@@ -33,9 +34,10 @@ if __name__ == "__main__":
     parser.add_argument("--n_cpu", type=int, default=0, help="number of cpu threads to use during batch generation")
     parser.add_argument("--img_size", type=int, default=416, help="size of each image dimension")
     parser.add_argument("--checkpoint_model", type=str, help="path to checkpoint model")
+    parser.add_argument("--WebCam", type=int, default=0, help="Whether use WebCam")
     opt = parser.parse_args()
     print(opt)
-
+    
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     os.makedirs("output", exist_ok=True)
