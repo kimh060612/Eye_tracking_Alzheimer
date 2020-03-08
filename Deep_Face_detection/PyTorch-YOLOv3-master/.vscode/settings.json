@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "/home/michael/anaconda3/envs/cuda/bin/python",
+    "python.linting.pylintArgs": [
+        "--generated-members=numpy.* ,torch.*",
+        "--rcfile",
+        "pylint.config",
+        "--disable",
+        "missing-docstring"
+    ]
+}
