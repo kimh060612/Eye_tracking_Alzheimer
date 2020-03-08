@@ -11,6 +11,7 @@ import datetime
 import argparse
 
 from PIL import Image
+import cv2
 
 import torch
 from torch.utils.data import DataLoader
@@ -33,6 +34,7 @@ if __name__ == "__main__":
     parser.add_argument("--n_cpu", type=int, default=0, help="number of cpu threads to use during batch generation")
     parser.add_argument("--img_size", type=int, default=416, help="size of each image dimension")
     parser.add_argument("--checkpoint_model", type=str, help="path to checkpoint model")
+    parser.add_argument("--WebCam", type=int ,default=0 ,help="Whether you will use WebCam")
     opt = parser.parse_args()
     print(opt)
 
