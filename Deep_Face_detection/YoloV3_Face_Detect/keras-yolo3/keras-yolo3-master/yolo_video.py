@@ -2,6 +2,7 @@ import sys
 import argparse
 from yolo import YOLO, detect_video, detect_WebCam
 from PIL import Image
+import os
 
 def detect_img(yolo):
     while True:
@@ -20,6 +21,8 @@ FLAGS = None
 
 if __name__ == '__main__':
     # class YOLO defines the default value, so suppress any default here
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+    
     parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS)
     '''
     Command line options

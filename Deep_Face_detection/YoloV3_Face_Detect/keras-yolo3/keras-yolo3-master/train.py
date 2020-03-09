@@ -1,7 +1,8 @@
 """
 Retrain the YOLO model for your own dataset.
 """
-
+import os
+import tensorflow as tf
 import numpy as np
 import keras.backend as K
 from keras.layers import Input, Lambda
@@ -17,6 +18,7 @@ from keras.utils import plot_model  # plot model
 import argparse
 
 def _main(annotation_path, classes_path, output_model_path):
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
     # return
     annotation_path = annotation_path
     log_dir = 'logs/000/'
@@ -67,7 +69,7 @@ def _main(annotation_path, classes_path, output_model_path):
 
         model.compile(optimizer=Adam(lr=1e-3), loss='mean_squared_error')
 
-        batch_size = 32
+        batch_size = 8
         print('Train on {} samples, val on {} samples, with batch size {}.'.format(num_train, num_val, batch_size))
         model.fit_generator(data_generator_wrapper(lines[:num_train], batch_size, input_shape, anchors, num_classes),
                 steps_per_epoch=max(1, num_train//batch_size),
