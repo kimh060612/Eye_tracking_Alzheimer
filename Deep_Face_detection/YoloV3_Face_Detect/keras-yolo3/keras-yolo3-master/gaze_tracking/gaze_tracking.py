@@ -139,10 +139,10 @@ class GazeTracking(object):
             #color = (0, 255, 0)
             x_left, y_left = self.pupil_left_coords()
             x_right, y_right = self.pupil_right_coords()
-            x_left += ori_x
-            x_right += ori_x
-            y_left += ori_y
-            y_right += ori_y
+            #x_left += ori_x
+            #x_right += ori_x
+            #y_left += ori_y
+            #y_right += ori_y
             '''
             cv2.line(frame, (x_left - 5, y_left), (x_left + 5, y_left), color)
             cv2.line(frame, (x_left, y_left - 5), (x_left, y_left + 5), color)

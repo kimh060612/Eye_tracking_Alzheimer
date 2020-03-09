@@ -22,8 +22,8 @@ def Eye_tracking(yolo):
         for face in Faces:
             x1, y1, x2, y2 = face
 
-            Face_img = frame[y1:y2,x1:x2]
-            gaze.refresh(Face_img)
+            #Face_img = frame[y1:y2,(x1-10):(x2+10)]
+            gaze.refresh(output)
 
             Ox1, Oy1, Ox2, Oy2 = gaze.annotated_frame(x1, y1)
             color = (0,0,255)
@@ -45,7 +45,7 @@ def Eye_tracking(yolo):
             
             left_pupil = gaze.pupil_left_relative_coords()
             right_pupil = gaze.pupil_right_relative_coords()
-            cv2.putText(output, text, (x1, y1 + 10), cv2.FONT_HERSHEY_DUPLEX, 0.8, (147, 58, 31), 2)
+            cv2.putText(output, text, (x1, y1 + 20), cv2.FONT_HERSHEY_DUPLEX, 0.8, (147, 58, 31), 2)
             cv2.putText(output, "Left pupil:  " + str(left_pupil), (x1, y1 + 50), cv2.FONT_HERSHEY_DUPLEX, 0.4, (147, 58, 31), 1)
             cv2.putText(output, "Right pupil: " + str(right_pupil), (x1, y1 + 65), cv2.FONT_HERSHEY_DUPLEX, 0.4, (147, 58, 31), 1)
 
